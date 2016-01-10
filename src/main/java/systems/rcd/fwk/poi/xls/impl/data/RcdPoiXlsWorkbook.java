@@ -1,6 +1,7 @@
 package systems.rcd.fwk.poi.xls.impl.data;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -14,5 +15,15 @@ public class RcdPoiXlsWorkbook extends LinkedHashMap<String, RcdXlsSheet> implem
         for (final Sheet sheet : workbook) {
             put(sheet.getSheetName(), new RcdPoiXlsSheet(sheet));
         }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer();
+        for (final Map.Entry<String, RcdXlsSheet> entry : entrySet()) {
+            sb.append("Sheet '" + entry.getKey() + "'").append(System.lineSeparator())
+                    .append(entry.getValue().toString()).append(System.lineSeparator());
+        }
+        return sb.toString();
     }
 }

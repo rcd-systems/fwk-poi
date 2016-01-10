@@ -26,5 +26,4 @@ public class RcdPoiXlsRow extends ArrayList<RcdXlsCell> implements RcdXlsRow {
             }
         }
     }
-
 }
