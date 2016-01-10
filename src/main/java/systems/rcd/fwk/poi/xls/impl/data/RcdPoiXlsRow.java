@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import systems.rcd.fwk.poi.xls.data.RcdXlsCell;
-import systems.rcd.fwk.poi.xls.data.RcdXlsRow;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsCell;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsRow;
 
 public class RcdPoiXlsRow extends ArrayList<RcdXlsCell> implements RcdXlsRow {
 

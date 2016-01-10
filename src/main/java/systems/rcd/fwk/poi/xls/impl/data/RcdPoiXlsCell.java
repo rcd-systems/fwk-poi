@@ -5,8 +5,8 @@ import java.time.Instant;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 
-import systems.rcd.fwk.poi.xls.data.RcdXlsCell;
-import systems.rcd.fwk.poi.xls.data.RcdXlsCellType;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsCell;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsCellType;
 
 public class RcdPoiXlsCell implements RcdXlsCell {
 

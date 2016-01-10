@@ -9,9 +9,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import systems.rcd.fwk.poi.xls.data.RcdXlsRow;
-import systems.rcd.fwk.poi.xls.data.RcdXlsSheet;
-import systems.rcd.fwk.poi.xls.data.RcdXlsWorkbook;
+import systems.rcd.fwk.core.format.xls.RcdXlsService;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsRow;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsSheet;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsWorkbook;
+import systems.rcd.fwk.poi.xls.impl.RcdPoiXlsService;
 
 public class RcdXlsServiceTest {
 
@@ -20,7 +22,7 @@ public class RcdXlsServiceTest {
 
     @Before
     public void before() {
-        RcdXlsService.setDefaultService();
+        RcdPoiXlsService.init();
     }
 
     @Test

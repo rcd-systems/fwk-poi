@@ -6,8 +6,8 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import systems.rcd.fwk.poi.xls.data.RcdXlsSheet;
-import systems.rcd.fwk.poi.xls.data.RcdXlsWorkbook;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsSheet;
+import systems.rcd.fwk.core.format.xls.data.RcdXlsWorkbook;
 
 public class RcdPoiXlsWorkbook extends LinkedHashMap<String, RcdXlsSheet> implements RcdXlsWorkbook {
     public RcdPoiXlsWorkbook(final Workbook workbook) {
@@ -22,7 +22,7 @@ public class RcdPoiXlsWorkbook extends LinkedHashMap<String, RcdXlsSheet> implem
         final StringBuffer sb = new StringBuffer();
         for (final Map.Entry<String, RcdXlsSheet> entry : entrySet()) {
             sb.append("Sheet '" + entry.getKey() + "'").append(System.lineSeparator())
-                    .append(entry.getValue().toString()).append(System.lineSeparator());
+            .append(entry.getValue().toString()).append(System.lineSeparator());
         }
         return sb.toString();
     }
