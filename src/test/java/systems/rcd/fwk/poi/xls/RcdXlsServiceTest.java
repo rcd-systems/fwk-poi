@@ -15,7 +15,7 @@ import systems.rcd.fwk.poi.xls.data.RcdXlsWorkbook;
 
 public class RcdXlsServiceTest {
 
-    private static final String FILE_DIRECTORY = "src/test/resources/systems/rcd/fwk/poi/Xls";
+    private static final String FILE_DIRECTORY = "src/test/resources/systems/rcd/fwk/poi/xls";
     private static final Path INPUT_PATH = Paths.get(FILE_DIRECTORY, "input.xls");
 
     @Before
@@ -32,15 +32,36 @@ public class RcdXlsServiceTest {
         final RcdXlsSheet xlsSheet2 = xlsWorkbook.get("Sheet2");
         final RcdXlsSheet xlsSheet1 = xlsWorkbook.get("Sheet1");
         Assert.assertEquals(1, xlsSheet2.size());
-        Assert.assertTrue(xlsSheet1.size() >= 5);
+        Assert.assertEquals(5, xlsSheet1.size());
 
         Assert.assertNull(xlsSheet2.get(0));
 
-        final RcdXlsRow xlsRow1 = xlsSheet1.get(0);
-        Assert.assertEquals("someText", xlsRow1.get(0).getStringValue());
-        Assert.assertEquals(LocalDate.of(2016, 2, 1), xlsRow1.get(1).getInstantValue().atZone(ZoneId.systemDefault())
+        RcdXlsRow xlsRow = xlsSheet1.get(0);
+        Assert.assertEquals(4, xlsRow.size());
+        Assert.assertEquals("someText", xlsRow.get(0).getStringValue());
+        Assert.assertEquals(LocalDate.of(2016, 2, 1), xlsRow.get(1).getInstantValue().atZone(ZoneId.systemDefault())
                 .toLocalDate());
-        Assert.assertEquals(1.2d, xlsRow1.get(2).getNumericValue(), 0d);
-        Assert.assertNull(xlsRow1.get(3));
+        Assert.assertEquals(1.2d, xlsRow.get(2).getNumericValue(), 0d);
+        Assert.assertNull(xlsRow.get(3));
+
+        xlsRow = xlsSheet1.get(1);
+        Assert.assertEquals(4, xlsRow.size());
+        Assert.assertEquals("someAdditionalText", xlsRow.get(0).getStringValue());
+        Assert.assertNull(xlsRow.get(1));
+        Assert.assertEquals(4.0d, xlsRow.get(2).getNumericValue(), 0d);
+        Assert.assertTrue(xlsRow.get(3).getBooleanValue());
+
+        xlsRow = xlsSheet1.get(2);
+        Assert.assertEquals(3, xlsRow.size());
+        Assert.assertEquals("someTextsomeAdditionalText", xlsRow.get(0).getStringValue());
+        Assert.assertNull(xlsRow.get(1));
+        Assert.assertEquals(5.2d, xlsRow.get(2).getNumericValue(), 0d);
+
+        xlsRow = xlsSheet1.get(3);
+        Assert.assertNull(xlsRow);
+
+        xlsRow = xlsSheet1.get(4);
+        Assert.assertEquals(1, xlsRow.size());
+        Assert.assertEquals("alone", xlsRow.get(0).getStringValue());
     }
 }
