@@ -14,10 +14,15 @@ public class RcdPoiXlsRow extends ArrayList<RcdXlsCell> implements RcdXlsRow {
         super(row.getLastCellNum());
         for (int i = 0; i < row.getLastCellNum(); i++) {
             final Cell cell = row.getCell(i, Row.RETURN_BLANK_AS_NULL);
-            if (cell == null) {
+            if (cell == null || cell.getCellType() == Cell.CELL_TYPE_ERROR) {
                 add(null);
             } else {
-                add(new RcdPoiXlsCell(cell));
+                RcdPoiXlsCell xlsCell = null;
+                try {
+                    xlsCell = new RcdPoiXlsCell(cell);
+                } catch (final Exception e) {
+                }
+                add(xlsCell);
             }
         }
     }
