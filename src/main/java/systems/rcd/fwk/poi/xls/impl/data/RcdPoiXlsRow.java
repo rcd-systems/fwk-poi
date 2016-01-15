@@ -1,5 +1,6 @@
 package systems.rcd.fwk.poi.xls.impl.data;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -25,5 +26,34 @@ public class RcdPoiXlsRow extends ArrayList<RcdXlsCell> implements RcdXlsRow {
                 add(xlsCell);
             }
         }
+    }
+
+    @Override
+    public String getString(final int index) {
+        final RcdXlsCell cell = get(index);
+        return cell == null ? null : cell.getStringValue();
+    };
+
+    @Override
+    public Instant getInstant(final int index) {
+        final RcdXlsCell cell = get(index);
+        return cell == null ? null : cell.getInstantValue();
+    }
+
+    @Override
+    public Double getNumber(final int index) {
+        final RcdXlsCell cell = get(index);
+        return cell == null ? null : cell.getNumericValue();
+    }
+
+    @Override
+    public Boolean getBoolean(final int index) {
+        final RcdXlsCell cell = get(index);
+        return cell == null ? null : cell.getBooleanValue();
+    }
+
+    @Override
+    public RcdXlsCell get(final int index) {
+        return size() > index ? super.get(index) : null;
     }
 }
