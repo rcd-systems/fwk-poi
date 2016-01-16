@@ -21,11 +21,13 @@ public class RcdPoiXlsCell implements RcdXlsCell {
     public RcdPoiXlsCell(final Cell cell) {
         switch (cell.getCellType()) {
         case Cell.CELL_TYPE_STRING:
-            stringValue = cell.getRichStringCellValue().getString();
+            stringValue = cell.getRichStringCellValue()
+            .getString();
             break;
         case Cell.CELL_TYPE_NUMERIC:
             if (DateUtil.isCellDateFormatted(cell)) {
-                instantValue = cell.getDateCellValue().toInstant();
+                instantValue = cell.getDateCellValue()
+                        .toInstant();
             } else {
                 numericValue = cell.getNumericCellValue();
             }
@@ -45,7 +47,8 @@ public class RcdPoiXlsCell implements RcdXlsCell {
                 break;
             } catch (final Exception e) {
             }
-            stringValue = cell.getRichStringCellValue().toString();
+            stringValue = cell.getRichStringCellValue()
+                    .toString();
             break;
         }
     }
@@ -75,12 +78,12 @@ public class RcdPoiXlsCell implements RcdXlsCell {
     }
 
     @Override
-    public double getNumericValue() {
+    public Double getNumericValue() {
         return numericValue;
     }
 
     @Override
-    public boolean getBooleanValue() {
+    public Boolean getBooleanValue() {
         return booleanValue;
     }
 
