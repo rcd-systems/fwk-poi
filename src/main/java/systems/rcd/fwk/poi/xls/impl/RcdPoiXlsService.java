@@ -15,17 +15,20 @@ import systems.rcd.fwk.core.ctx.RcdContext;
 import systems.rcd.fwk.core.format.xls.RcdXlsService;
 import systems.rcd.fwk.poi.xls.impl.data.RcdPoiXlsWorkbook;
 
-public class RcdPoiXlsService implements RcdXlsService {
-
-    public static void init() {
-        RcdContext.setGlobalServiceSupplier(RcdXlsService.class, () -> new RcdPoiXlsService());
+public class RcdPoiXlsService
+    implements RcdXlsService
+{
+    public static void init()
+    {
+        RcdContext.setGlobalServiceSupplier( RcdXlsService.class, () -> new RcdPoiXlsService() );
     }
 
     @Override
-    public RcdPoiXlsWorkbook instRead(final Path path) throws EncryptedDocumentException, InvalidFormatException,
-            IOException {
-        final InputStream inputStream = Files.newInputStream(path, StandardOpenOption.READ);
-        final Workbook workbook = WorkbookFactory.create(inputStream);
-        return new RcdPoiXlsWorkbook(workbook);
+    public RcdPoiXlsWorkbook instRead( final Path path )
+        throws EncryptedDocumentException, InvalidFormatException, IOException
+    {
+        final InputStream inputStream = Files.newInputStream( path, StandardOpenOption.READ );
+        final Workbook workbook = WorkbookFactory.create( inputStream );
+        return new RcdPoiXlsWorkbook( workbook );
     }
 }
