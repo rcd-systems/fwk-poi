@@ -1,6 +1,6 @@
 package systems.rcd.fwk.poi.xls.impl.data;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -14,7 +14,7 @@ public class RcdPoiXlsCell
 
     private String stringValue;
 
-    private Instant instantValue;
+    private LocalDateTime localDateTimeValue;
 
     private Double numericValue;
 
@@ -30,7 +30,7 @@ public class RcdPoiXlsCell
             case NUMERIC:
                 if ( DateUtil.isCellDateFormatted( cell ) )
                 {
-                    instantValue = cell.getDateCellValue().toInstant();
+                    localDateTimeValue = cell.getLocalDateTimeCellValue();
                 }
                 else
                 {
@@ -70,9 +70,9 @@ public class RcdPoiXlsCell
         {
             return RcdXlsCellType.STRING;
         }
-        if ( instantValue != null )
+        if ( localDateTimeValue != null )
         {
-            return RcdXlsCellType.INSTANT;
+            return RcdXlsCellType.DATETIME;
         }
         if ( numericValue != null )
         {
@@ -88,9 +88,9 @@ public class RcdPoiXlsCell
     }
 
     @Override
-    public Instant getInstantValue()
+    public LocalDateTime getDateTimeValue()
     {
-        return instantValue;
+        return localDateTimeValue;
     }
 
     @Override
@@ -112,9 +112,9 @@ public class RcdPoiXlsCell
         {
             return stringValue;
         }
-        if ( instantValue != null )
+        if ( localDateTimeValue != null )
         {
-            return instantValue.toString();
+            return localDateTimeValue.toString();
         }
         if ( numericValue != null )
         {
