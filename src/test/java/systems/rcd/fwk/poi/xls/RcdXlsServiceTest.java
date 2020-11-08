@@ -4,8 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.LocalDateTime;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -47,7 +46,7 @@ public class RcdXlsServiceTest
         RcdXlsRow xlsRow = xlsSheet1.get( 0 );
         Assert.assertEquals( 4, xlsRow.size() );
         Assert.assertEquals( "someText", xlsRow.get( 0 ).getStringValue() );
-        Assert.assertEquals( LocalDate.of( 2016, 2, 1 ), xlsRow.get( 1 ).getInstantValue().atZone( ZoneId.systemDefault() ).toLocalDate() );
+        Assert.assertEquals( LocalDateTime.of( 2016, 2, 1, 0, 0 ), xlsRow.get( 1 ).getDateTimeValue() );
         Assert.assertEquals( 1.2d, xlsRow.get( 2 ).getNumericValue(), 0d );
         Assert.assertNull( xlsRow.get( 3 ) );
 
