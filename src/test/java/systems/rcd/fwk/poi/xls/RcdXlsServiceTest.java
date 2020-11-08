@@ -1,7 +1,10 @@
 package systems.rcd.fwk.poi.xls;
 
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -32,7 +35,7 @@ public class RcdXlsServiceTest
     public void test()
         throws Exception
     {
-        final RcdXlsWorkbook xlsWorkbook = RcdXlsService.read( INPUT_PATH );
+        final RcdXlsWorkbook xlsWorkbook = RcdXlsService.read( Files.newInputStream( INPUT_PATH, StandardOpenOption.READ ) );
         System.out.println( xlsWorkbook.toString() );
 
         Assert.assertEquals( 3, xlsWorkbook.size() );

@@ -1,9 +1,6 @@
 package systems.rcd.fwk.poi.xls.impl;
 
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -22,17 +19,16 @@ public class RcdPoiXlsService
     }
 
     @Override
-    public RcdPoiXlsWorkbook instRead( final Path path )
+    public RcdPoiXlsWorkbook instRead( final InputStream inputStream )
     {
         try
         {
-            final InputStream inputStream = Files.newInputStream( path, StandardOpenOption.READ );
             final Workbook workbook = WorkbookFactory.create( inputStream );
             return new RcdPoiXlsWorkbook( workbook );
         }
         catch ( Exception e )
         {
-            throw new RcdException( "Error while reading XLS file [" + path + "]", e );
+            throw new RcdException( "Error while reading XLS file", e );
         }
     }
 }
