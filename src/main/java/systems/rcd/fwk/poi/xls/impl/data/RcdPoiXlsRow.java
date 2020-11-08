@@ -1,6 +1,7 @@
 package systems.rcd.fwk.poi.xls.impl.data;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -50,10 +51,10 @@ public class RcdPoiXlsRow
     ;
 
     @Override
-    public Instant getInstant( final int index )
+    public LocalDateTime getDateTime( final int index )
     {
         final RcdXlsCell cell = get( index );
-        return cell == null ? null : cell.getInstantValue();
+        return cell == null ? null : cell.getDateTimeValue();
     }
 
     @Override
