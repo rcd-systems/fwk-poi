@@ -14,7 +14,7 @@ public class RcdPoiXlsSheet
 {
     public RcdPoiXlsSheet( final Sheet sheet )
     {
-        super( sheet.getLastRowNum() );
+        super( sheet.getLastRowNum() == -1 ? 0 : sheet.getLastRowNum() );
         for ( int i = 0; i <= sheet.getLastRowNum(); i++ )
         {
             final Row row = sheet.getRow( i );

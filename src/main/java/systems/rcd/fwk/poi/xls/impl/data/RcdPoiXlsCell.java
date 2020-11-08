@@ -24,10 +24,10 @@ public class RcdPoiXlsCell
     {
         switch ( cell.getCellType() )
         {
-            case Cell.CELL_TYPE_STRING:
+            case STRING:
                 stringValue = cell.getRichStringCellValue().getString();
                 break;
-            case Cell.CELL_TYPE_NUMERIC:
+            case NUMERIC:
                 if ( DateUtil.isCellDateFormatted( cell ) )
                 {
                     instantValue = cell.getDateCellValue().toInstant();
@@ -37,10 +37,10 @@ public class RcdPoiXlsCell
                     numericValue = cell.getNumericCellValue();
                 }
                 break;
-            case Cell.CELL_TYPE_BOOLEAN:
+            case BOOLEAN:
                 booleanValue = cell.getBooleanCellValue();
                 break;
-            case Cell.CELL_TYPE_FORMULA:
+            case FORMULA:
 
                 try
                 {

@@ -1,7 +1,6 @@
 package systems.rcd.fwk.poi.xls;
 
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -35,16 +34,15 @@ public class RcdXlsServiceTest
     public void test()
         throws Exception
     {
+
         final RcdXlsWorkbook xlsWorkbook = RcdXlsService.read( Files.newInputStream( INPUT_PATH, StandardOpenOption.READ ) );
         System.out.println( xlsWorkbook.toString() );
 
         Assert.assertEquals( 3, xlsWorkbook.size() );
         final RcdXlsSheet xlsSheet2 = xlsWorkbook.get( "Sheet2" );
         final RcdXlsSheet xlsSheet1 = xlsWorkbook.get( "Sheet1" );
-        Assert.assertEquals( 1, xlsSheet2.size() );
+        Assert.assertEquals( 0, xlsSheet2.size() );
         Assert.assertEquals( 5, xlsSheet1.size() );
-
-        Assert.assertNull( xlsSheet2.get( 0 ) );
 
         RcdXlsRow xlsRow = xlsSheet1.get( 0 );
         Assert.assertEquals( 4, xlsRow.size() );

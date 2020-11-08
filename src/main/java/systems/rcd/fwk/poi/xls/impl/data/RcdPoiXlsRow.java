@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
 import systems.rcd.fwk.core.format.xls.data.RcdXlsCell;
@@ -19,8 +20,8 @@ public class RcdPoiXlsRow
         super( row.getLastCellNum() );
         for ( int i = 0; i < row.getLastCellNum(); i++ )
         {
-            final Cell cell = row.getCell( i, Row.RETURN_BLANK_AS_NULL );
-            if ( cell == null || cell.getCellType() == Cell.CELL_TYPE_ERROR )
+            final Cell cell = row.getCell( i, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL );
+            if ( cell == null || cell.getCellType() == CellType.ERROR )
             {
                 add( null );
             }
